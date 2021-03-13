@@ -3,18 +3,21 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
+import countries from './countries.json';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Navbar></Navbar>
-        <CountriesList></CountriesList>
+      <Navbar></Navbar>
+      <div className="container">
+        <div className="row">
+          <CountriesList countries={countries} />
+          
+          <Switch>
+            <Route path="/:cc3" component={CountryDetails} exact />
+          </Switch>
+        </div>
       </div>
-      {/* <Switch>
-        <Route path="/book/:id" component={SingleBook} exact />
-        <Route path="/" component={BookList} exact />
-      </Switch> */}
     </BrowserRouter>
   );
 }

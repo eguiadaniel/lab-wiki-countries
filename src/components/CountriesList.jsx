@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CountryDetails from './../components/CountryDetails';
+
 import './../App.css';
 import countries from './../countries.json';
 
@@ -34,7 +36,7 @@ class CountriesList extends Component {
                 </Link>
               ))}
             </div>
-          </div>
+          </div>          
         </div>
       </div>
     );
