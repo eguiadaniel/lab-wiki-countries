@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Navbar></Navbar>
       <div className="container">
-      <div className="row">
+      <div className="row" style={{flexWrap: 'nowrap'}}>
           <CountriesList countries={countries} />
           
           <Switch>
