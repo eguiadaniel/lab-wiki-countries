@@ -18,11 +18,11 @@ class CountriesList extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      
+        
           <div
             className="col-5"
-            style={{ maxHeight: '90vh', overflowY: 'scroll' }}
+            style={{ maxHeight: '70vh', overflowY: 'scroll' }}
           >
             <div className="list-group">
               {this.state.countries.map((country) => (
@@ -31,14 +31,15 @@ class CountriesList extends Component {
                   key={country.cca3}
                   to={`/${country.cca3}`}
                 >
-                  <small>{country.cca3}</small>
+                <img src={`https://www.countryflags.io/${country.cca2}/flat/16.png`} alt={country.name.common}/>
+                  {/* <small>{country.cca3}</small> */}
                   {` ${country.name.common}`}
                 </Link>
               ))}
             </div>
           </div>          
-        </div>
-      </div>
+        
+      
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../App.css';
+import countries from './../countries.json';
 
 // import books from './../books.json';
 
@@ -8,35 +9,85 @@ class CountryDetails extends Component {
     country: null,
   };
 
-  // componentDidMount() {
-  //   this.loadBoook();
-  // }
+  loadCountry() {
+    const countryCode = this.props.match.params.cca3;
+    const country = countries.find((country) => country.cca3 === countryCode);
+    this.setState({
+      country: country,
+    });
+  }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('changed props match id');
-  //   if (this.props.match.params.id !== prevProps.match.params.id) {
-  //     console.log(
-  //       'componentDidUpdate was triggered by a change in the id being passed in the props obj'
-  //     );
-  //     this.loadBoook();
-  //   }
-  // }
+  componentDidMount() {
+    this.loadCountry();
+  }
 
-  // loadBoook() {
-  //   const book = books.find((book) => book.id === this.props.match.params.id);
-  //   this.setState({
-  //     book: book,
-  //   });
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('changed props match cca3');
+    if (this.props.match.params.cca3 !== prevProps.match.params.cca3) {
+      console.log(
+        'componentDidUpdate was triggered by a change in the id being passed in the props obj'
+      );
+      this.loadCountry();
+    }
+  }
 
+  
   render() {
-    const params = this.props.match.params.cc3;
+    
     console.log('-------------------');
-    console.log(this.props);
+    console.log(this.state.country);
+    const country = this.state.country;
     return (
-      <div className="col-7">
-        <h1>Hello {this.props.match.params.cc3}</h1>
+       
+        <div
+          className="col-7"
+          style={{ maxHeight: '90vh', overflowY: 'scroll' }}
+        >
+        {this.state.country && (
+
+        <div>
+        {/* <h1>{this.props.match.params.cca3}</h1> */}
+        <h1>{country.name.common}</h1>
+            <table className="table">
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td style={{width: "30%"}}>Capital</td>
+                  <td>{country.capital}</td>
+                </tr>
+                <tr>
+                  <td>Area</td>
+                  <td>
+                  {country.area} km
+                    <sup>2</sup>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Borders</td>
+                  <td>
+                    <ul>
+                    {country.borders.map(item =><li>{countries.find(country => country.cca3 === item).name.common}</li>)}
+                      {/* <li><a href="/AND">Andorra</a></li>
+                      <li><a href="/BEL">Belgium</a></li>
+                      <li><a href="/DEU">Germany</a></li>
+                      <li><a href="/ITA">Italy</a></li>
+                      <li><a href="/LUX">Luxembourg</a></li>
+                      <li><a href="/MCO">Monaco</a></li>
+                      <li><a href="/ESP">Spain</a></li>
+                      <li><a href="/CHE">Switzerland</a></li> */}
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+
+        )}
+
       </div>
+     
+      
     );
   }
 }
@@ -44,7 +95,7 @@ class CountryDetails extends Component {
 export default CountryDetails;
 
 {
-  /* <div class="col-7">
+  /* <div className="col-7">
             <h1>France</h1>
             <table class="table">
               <thead></thead>

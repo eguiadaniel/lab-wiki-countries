@@ -9,15 +9,15 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar></Navbar>
-      <div className="container">
-        <div className="row">
+      <div className="container wrapper">
+      <div className="row">
           <CountriesList countries={countries} />
           
           <Switch>
-            <Route path="/:cc3" component={CountryDetails} exact />
+            <Route path="/:cca3" component={CountryDetails} exact />
           </Switch>
         </div>
-      </div>
+        </div>
     </BrowserRouter>
   );
 }
