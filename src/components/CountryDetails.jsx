@@ -40,8 +40,11 @@ class CountryDetails extends Component {
     return (
        
         <div
-          className="col-7"
-          style={{ maxHeight: '90vh', overflowY: 'scroll' }}
+          className="d-flex flex-row"
+          style={{ maxHeight: '90vh', 
+          overflowY: 'scroll',
+          flex: 'auto',
+          padding: '2em' }}
         >
         {this.state.country && (
 

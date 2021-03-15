@@ -21,7 +21,7 @@ class CountriesList extends Component {
       
         
           <div
-            className="col-5"
+            className="d-flex flex-row"
             style={{ maxHeight: '70vh', overflowY: 'scroll' }}
           >
             <div className="list-group">

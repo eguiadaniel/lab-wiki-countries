@@ -4,12 +4,13 @@ import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
 import countries from './countries.json';
+import axios from 'axios'
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar></Navbar>
-      <div className="container wrapper">
+      <div className="container">
       <div className="row">
           <CountriesList countries={countries} />
           
